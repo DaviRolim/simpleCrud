@@ -35,7 +35,7 @@ public class JPAConfiguration {
         prop.setProperty("hibernate.hbm2ddl.auto", "update");
         factoryBean.setJpaProperties(prop);
 
-        factoryBean.setPackagesToScan("br.com.spring.models");
+        factoryBean.setPackagesToScan("br.com.crud.model");
 
         return factoryBean;
 

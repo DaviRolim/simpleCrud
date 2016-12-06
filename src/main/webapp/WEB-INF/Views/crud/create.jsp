@@ -10,11 +10,26 @@
 <title>Create</title>
 </head>
 <body>
-Hello World
-
-	<form action="" method="post">
+<h1>${cadastrar}</h1>
+<h3>${sucesso}</h3>
+<c:url value="/crud/create" var="urlformulario"/>
+	<form action="${urlformulario}" method="post">
 	
 	
+	<label>Nome</label>
+	<input type="text" name="nome">
+	<br>
+	<label>Email</label>
+	<input type="text" name="email">
+	<br>
+	<label>CPF</label>
+	<input type="text" name="cpf">
+	<br>
+	<label>Celular</label>
+	<input type="text" name="celular">
+	<br>
+	
+	<button type="submit">Submeter</button>
 	
 	</form>
 

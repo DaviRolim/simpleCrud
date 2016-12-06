@@ -10,13 +10,19 @@ import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import br.com.crud.controller.CrudController;
+import br.com.crud.controller.HomeController;
+import br.com.crud.dao.UsuarioDAO;
 
 
 @EnableWebMvc
-//@ComponentScan(basePackageClasses = { HomeController.class, ProdutosDAO.class, FileSaver.class })
-public class AppWebConfiguration {
+@ComponentScan(basePackageClasses = { HomeController.class, UsuarioDAO.class})
+public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
@@ -58,6 +64,11 @@ public class AppWebConfiguration {
 	@Bean
 	public MultipartResolver multipartResolver() {
 		return new StandardServletMultipartResolver();
+	}
+	
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 	}
 
 }

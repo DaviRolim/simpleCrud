@@ -22,8 +22,7 @@ public class SpringConfig extends AbstractAnnotationConfigDispatcherServletIniti
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-//		return new Class[] {};
-		return null;
+		return new Class[] {AppWebConfiguration.class, JPAConfiguration.class};
 	}
 
 	@Override
