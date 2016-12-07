@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,6 +41,37 @@ public class CrudController {
 		List<Usuario> usuarios = dao.read();
 		modelAndView.addObject("usuarios", usuarios);
 		return modelAndView;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET ,value="/update/{id}")
+	public ModelAndView getUpdate(@PathVariable("id") Integer id) {
+		ModelAndView modelAndView = new ModelAndView("crud/update");
+		Usuario usuario = dao.find(id);
+		modelAndView.addObject("usuario", usuario);
+		return modelAndView;
+		
+	}
+	@RequestMapping(method=RequestMethod.POST ,value="/update/{id}")
+	public String setUpdate(Usuario usuario) {
+		Usuario user = new Usuario();
+		user.setId(usuario.getId());
+		user.setCelular(usuario.getCelular());
+		user.setCpf(usuario.getCpf());
+		user.setEmail(usuario.getEmail());
+		user.setNome(usuario.getNome());
+		dao.update(user);
+		
+		return "redirect:/crud/read";
+		
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id){
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		dao.delete(usuario);
+
+		return "redirect:/crud/read";
 	}
 	
 	

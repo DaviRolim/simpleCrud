@@ -34,8 +34,8 @@
 
 <td>
 		<span>
-			<a href='<c:url value="/delete/${usuario.id}"  />' >[Deletar]</a>
-			<a href='<c:url value="/update/${usuario.id}"  />' >[Update]</a>
+			<a href='<c:url value="/crud/delete/${usuario.id}"  />' >[Deletar]</a>
+			<a href='<c:url value="/crud/update/${usuario.id}"  />' >[Update]</a>
 			
 		</span>
 </td>
@@ -45,8 +45,9 @@
 </c:forEach>
 
 </table>
-<a href="/mycrud"><button type="button">Voltar</button></a>
-
+<div class="text-center">
+<a href="/mycrud"><button type="button" class="btn btn-default">Voltar</button></a>
+</div>
 
 </body>
 </html>
