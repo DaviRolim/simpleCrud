@@ -29,7 +29,8 @@ public class UsuarioDAO {
 		manager.merge(usuario);
 	}
 	
-	public void delete(Usuario usuario) {
+	public void delete(Integer id) {
+		Usuario usuario = manager.find(Usuario.class, id);
 		manager.remove(usuario);
 	}
 	

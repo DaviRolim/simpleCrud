@@ -8,46 +8,69 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Read</title>
-<c:url value="/resources/css" var="cssPath"/>
-<link rel="stylesheet" href="${cssPath}/bootstrap.min.css" >
-<link rel="stylesheet" href="${cssPath}/bootstrap-theme.min.css" >
+<c:url value="/resources/css" var="cssPath" />
+<link rel="stylesheet" href="${cssPath}/bootstrap.min.css">
+<link rel="stylesheet" href="${cssPath}/bootstrap-theme.min.css">
 </head>
 <body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="text-center">
+				<h1>Lista de Usuários</h1>
+			</div>
+		</div>
 
-<h1>Lista de Usuários</h1>
+		<div class="row">
+			<div class="col-sm-8 col-xs-12 col-sm-offset-2">
+				<table class="table table-striped table-hover table-bordered">
 
-<table class="table table-striped table-hover">
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Celular</th>
+						<th>CPF</th>
+						<th>Ação</th>
+					</tr>
 
-<tr>
-<th>Nome </th>
-<th>Email </th>
-<th>Celular </th>
-<th>CPF </th>
-</tr>
+					<c:forEach items="${usuarios }" var="usuario">
+						<tr>
+							<td>${usuario.nome}</td>
+							<td>${usuario.email}</td>
+							<td>${usuario.celular}</td>
+							<td>${usuario.cpf}</td>
 
-<c:forEach items="${usuarios }" var="usuario">
-<tr>
-<td>${usuario.nome}</td>
-<td>${usuario.email}</td>
-<td>${usuario.celular}</td>
-<td>${usuario.cpf}</td>
+							<td>
+							<div class="btn-group">
+									<a id="deletarId" class="btn btn-default" href='<c:url value="/crud/delete/${usuario.id}"  />'>Deletar</a>
+									<a class="btn btn-success" href='<c:url  value="/crud/update/${usuario.id}"  />'>Update</a>
+							</div>
+							</td>
 
-<td>
-		<span>
-			<a href='<c:url value="/crud/delete/${usuario.id}"  />' >[Deletar]</a>
-			<a href='<c:url value="/crud/update/${usuario.id}"  />' >[Update]</a>
-			
-		</span>
-</td>
+						</tr>
 
-</tr>
+					</c:forEach>
 
-</c:forEach>
+				</table>
+			</div>
+		</div>
+		<div class="text-center">
+			<a href="/mycrud/crud/create"><button type="button"
+					class="btn btn-default">Cadastrar</button></a>
+		</div>
+	</div>
+<c:url value="/resources/js" var="jsPath" />
+<script src="${jsPath}/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("td:first-child").hover(function () {
+			$(this).css("border", "0.3px solid black").animate({borderWidth: 1}, 100);
 
-</table>
-<div class="text-center">
-<a href="/mycrud"><button type="button" class="btn btn-default">Voltar</button></a>
-</div>
+		}, function () {
+			$(this).animate({borderWidth: 0}, 150);
+		});
+	});
+
+</script>
 
 </body>
 </html>

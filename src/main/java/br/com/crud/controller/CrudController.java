@@ -30,7 +30,6 @@ public class CrudController {
 	@RequestMapping(method=RequestMethod.POST ,value="/create")
 	public String postCreate(Usuario usuario, RedirectAttributes redirectAttributes) {
 		dao.create(usuario);
-		redirectAttributes.addFlashAttribute("sucesso", "Cadastrado com sucesso");
 		return "redirect:/crud/read";
 
 	}
@@ -67,10 +66,7 @@ public class CrudController {
 	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id){
-		Usuario usuario = new Usuario();
-		usuario.setId(id);
-		dao.delete(usuario);
-
+		dao.delete(id);
 		return "redirect:/crud/read";
 	}
 	
