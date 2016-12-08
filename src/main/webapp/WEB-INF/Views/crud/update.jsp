@@ -41,7 +41,7 @@
 				<div class="clearfix"></div>
 				
 				<div class="btn-group">
-				<button type="submit" class="btn btn-primary">Enviar</button>
+				<button type="submit" class="btn btn-primary">Atualizar</button>
 				<a class="btn btn-default" href="/mycrud/crud/read">Voltar</a>
 				</div>
 		</fieldset>
